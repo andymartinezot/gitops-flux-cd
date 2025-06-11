@@ -5,6 +5,6 @@ resources:
   - ../../base
   - namespace.yaml
 
-patchesStrategicMerge:
-  - patch-deployment.yaml
-  - patch-configmap.yaml
+patches:
+  # - path: patch-deployment.yaml
+  - path: patch-configmap.yaml
