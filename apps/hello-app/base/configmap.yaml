@@ -8,8 +8,8 @@ data:
       <body>
         <pre>
         Hello, world!
-        Version: 1.0.0
-        Environment: int
+        Version: 2.0.0
+        Environment: int or dev
         </pre>
       </body>
     </html>
