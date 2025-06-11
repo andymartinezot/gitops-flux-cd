@@ -10,8 +10,4 @@ spec:
     - name: http
       port: 80
       targetPort: 80
-      nodePort: 30880  # Accessible via http://<minikube-ip>:30880
-
-# for mac then minikube ip may not be reachable directly.
-# execute: minikube service nginx --url
-# and use that ip to access the service.
+      # nodePort removed — will be patched in overlays
