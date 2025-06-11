@@ -3,13 +3,4 @@ kind: ConfigMap
 metadata:
   name: nginx-html
 data:
-  index.html: |
-    <html>
-      <body>
-        <pre>
-        Hello, world!
-        Version: 1.0.1
-        Environment: int
-        </pre>
-      </body>
-    </html>
+  index.html: PLACEHOLDER
