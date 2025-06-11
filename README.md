@@ -18,9 +18,13 @@ This repository follows GitOps principles where:
 │   └── hello-app/          # Sample application
 │       ├── base/           # Base Kubernetes manifests
 │       └── overlays/       # Environment-specific configurations
+│           ├── int/        # Integration environment configuration
+│           ├── stg/        # Staging environment configuration
 │           └── prd/        # Production environment configuration
 └── clusters/               # Cluster-specific configurations
     └── my-cluster/        # Configuration for a specific cluster
+        ├── int-hello-app.yaml  # Integration deployment configuration
+        ├── stg-hello-app.yaml  # Staging deployment configuration
         └── prd-hello-app.yaml  # Production deployment configuration
 ```
 
@@ -38,9 +42,12 @@ This repository follows GitOps principles where:
 
 ## Current Configuration
 
-The repository is configured to deploy a hello-app to a production environment with the following settings:
+The repository is configured to deploy a hello-app to three environments with the following settings:
 - Deployment interval: 1 minute
-- Target namespace: `prd`
+- Target namespaces: 
+  - `int` (Integration)
+  - `stg` (Staging)
+  - `prd` (Production)
 - Deployment timeout: 2 minutes
 - Automatic pruning of removed resources
 - Git-based source of truth
@@ -109,14 +116,20 @@ When running on macOS with Minikube, the cluster IP might not be directly reacha
 To access the hello-app service in different environments:
 
 ```bash
+# For integration environment
+minikube service hello-app --url -n int
+# This will output something like: http://127.0.0.1:XXXXX
+# Use this URL to access the hello-app service in your browser
+
+# For staging environment
+minikube service hello-app --url -n stg
+# This will output something like: http://127.0.0.1:XXXXX
+# Use this URL to access the hello-app service in your browser
+
 # For production environment
 minikube service hello-app --url -n prd
 # This will output something like: http://127.0.0.1:XXXXX
 # Use this URL to access the hello-app service in your browser
-
-# For other environments (if configured)
-# minikube service hello-app --url -n dev
-# minikube service hello-app --url -n qat
 ```
 
 ### Accessing Flux CD UI (if enabled)
@@ -134,6 +147,14 @@ Note: Make sure Minikube is running before executing these commands. If you get 
 1. The service exists in the specified namespace
 2. The service is of type LoadBalancer or NodePort
 3. The pods are running correctly
+
+### Environment-Specific Notes
+
+- **Integration (int)**: Used for development and integration testing
+- **Staging (stg)**: Used for pre-production testing and validation
+- **Production (prd)**: Used for live production workloads
+
+Each environment has its own namespace and configuration, allowing for isolated testing and deployment.
 
 ## Contributing
 
