@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-html
+data:
+  index.html: |
+    <html>
+      <body>
+        <pre>
+        Hello, world!
+        Version: 1.1.1 (int) -from patch-configmap.yaml
+        </pre>
+      </body>
+    </html>

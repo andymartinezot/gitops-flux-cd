@@ -4,3 +4,7 @@ namespace: int
 resources:
   - ../../base
   - namespace.yaml
+
+patchesStrategicMerge:
+  - patch-deployment.yaml
+  - patch-configmap.yaml
