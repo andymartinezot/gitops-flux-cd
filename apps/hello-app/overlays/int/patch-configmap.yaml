@@ -8,7 +8,7 @@ data:
       <body>
         <pre>
         Hello, world!
-        Version: 1.1.1 (int) -from patch-configmap.yaml
+        Version: 1.0.1 (int)
         </pre>
       </body>
     </html>
